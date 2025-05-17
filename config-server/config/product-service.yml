@@ -1,0 +1,18 @@
+server:
+  port: 8081
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:postgresql://localhost:5433/graphqldemo
+    username: postgres
+    password: sp
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  application:
+    name: product-service

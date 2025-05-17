@@ -1,3 +1,31 @@
+server:
+  port: 8761
+
 spring:
   application:
     name: discovery-service
+
+eureka:
+  client:
+    # Below are false so that eureka-server does not try to register itself, it should work as a server
+    register-with-eureka: false
+    fetch-registry: false
+  server:
+    # Every 5 min re-calculation will happen how many heartbeats were received from services
+    renewal-threshold-update-interval-ms: 300000
+    # Every 5 min unhealthy instances will be removed
+    eviction-interval-timer-in-ms: 300000
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+logging:
+  level:
+    com.netflix.eureka: DEBUG
+    com.netflix.discovery: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.web: INFO
+    org.springframework.cloud: INFO
